@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="icon" type="image/x-icon" href="https://aplayerunnamed.github.io/favicon.ico">
+    </head>
+<noscript>
+    JavaScript is required to run this page...
+</noscript>
+</html>
+
+<style>
+    html {
+        background-image: url("back.png");
+        color:azure;
+        font-family:'Courier New', Courier, monospace;
+        text-align: center;
+        font-size: 200%;
+    }
+</style>
+
+<script>
+    
+    // Create a new URL object
+    let address = new URL(window.location);
+    // Get searchParameters property of the URL object
+    let queryParameters = address.searchParams;
+    // Retrieve specific query parameters
+    let redirectLocation = queryParameters.get("redirectLocation");
+    let linkTitle = queryParameters.get("linkTitle");
+    if (!redirectLocation) {
+            document.write('Unable to send you to the target domain!')
+            window.close();
+            window.history.back()
+        }
+    console.log(redirectLocation)
+    document.write('Sending you to ', linkTitle)
+    document.title = 'Sending you to ' + linkTitle
+    document.location.replace(redirectLocation)
+
+</script>
