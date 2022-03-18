@@ -17,7 +17,7 @@
 
 <!--NO SCRIPT-->
 <noscript>
-    <h1><a>No Javascript detected, click to view html/mobile version</a></h1>
+    <h1><a href="https://aplayerunnamed.github.io/pages/mobile"><br><br><br><br>No Javascript detected, click to view html/mobile version</a></h1>
 </noscript>
 
 <div>
@@ -58,13 +58,13 @@
         </div>
         <div class="links">
             <button id="r1" onClick="openUp('https://github.com/APlayerUnnamed')"><img
-                    src="GitHub-Mark-Light-120px-plus.png" width=20%>
-                <button id="r2" onClick="openUp('https://discord.gg/Mcd52kjMPt')"><img src="Discord1.png" width=20%>
+                    src="github.png" width=20%>
+                <button id="r2" onClick="openUp('https://discord.gg/Mcd52kjMPt')"><img src="discordred.png" width=20%>
                     <button id="r3" onClick="openUp('https://discord.com/users/852693261608812575')"><img
-                            src="Discord2.png" width=20%>
+                            src="discordblue.png" width=20%>
                         <button id="r4"
                             onClick="openUp('mailto:user@aplayerunnamed@gmail.com?subject=Hello APlayerUnnamed!')"><img
-                                src="email.png" width=20%>
+                                src="mail.png" width=20%>
 
         </div>
         <div class="botText">
@@ -439,12 +439,22 @@ function wait(milisec) {
         setTimeout(() => { resolve('') }, milisec);
     })
 }
+    const usingInternetExplorer = () => {
+            return (navigator.userAgent.indexOf(`MSIE `) > - 1 || navigator.userAgent.indexOf(`Trident/`) > - 1);
+        };
 
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+    {
         console.log("Seems to be on Mobile - Redirecting")
         document.location.replace("https://aplayerunnamed.github.io/pages/mobile")
-    } else {
+    } else
+    {
         console.log("Seems to be on PC")
+    }
+
+    if (!usingInternetExplorer)
+    {
+        document.location.replace("https://aplayerunnamed.github.io/pages/mobile")
     }
 
 
@@ -509,7 +519,7 @@ toggle('content_id')
 preloadImage('email.png', console.log('Loaded Email.png'));
 preloadImage('Discord1.png', console.log('Loaded Discord1.png'));
 preloadImage('Discord2.png', console.log('Loaded Discord2.png'));
-preloadImage('GitHub-Mark-Light-120px-plus.png', console.log('Loaded Github'));
+preloadImage('github.png', console.log('Loaded Github'));
 preloadImage('back.png', console.log('Loaded Background!'))
 toggle('content_id')
 } catch (e) {
