@@ -42,9 +42,7 @@
         <h2 id="projectsTitle"><br><br>Projects</h2>
         </div>
         <div class="projectsC">
-            <h1 id="projectOne"><a href="" onClick="openUp('https://github.com/APlayerUnnamed/lime')" target="_blank"
-                    style="text-decoration: none;cursor: pointer; color: unset;">Lime, a Discord
-                    Bot<br></a></h1>
+            <h1 id="projectOne" onclick="openUp('https://github.com/APlayerUnnamed/lime', 'Lime')" style="cursor:help;">Lime, a Discord bot</h1>
             <h1 id="projectTwo">No Projects Here ¯\_(ツ)_/¯</h1>
             <h1 id="projectThree">No Projects Here ¯\_(ツ)_/¯</h1>
             <h1 id="projectFour">No Projects Here ¯\_(ツ)_/¯</h1>
@@ -59,13 +57,13 @@
         </div>
         <div class="links">
             <button id="r1" onClick="openUp('https://github.com/APlayerUnnamed')"><img
-                    src="github.png" width=20%>
-                <button id="r2" onClick="openUp('https://discord.gg/Mcd52kjMPt')"><img src="discordred.png" width=20%>
+                    src="github.png" width=20% alt="APlayerUnnamed's Github">
+                <button id="r2" onClick="openUp('https://discord.gg/Mcd52kjMPt')"><img src="discordred.png" alt="Trustless - APlayerUnnamed's Discord Server" width=20%>
                     <button id="r3" onClick="openUp('https://discord.com/users/852693261608812575')"><img
-                            src="discordblue.png" width=20%>
+                            src="discordblue.png" width=20% alt="APlayerUnnamed's Discord Profile">
                         <button id="r4"
                             onClick="openUp('mailto:user@aplayerunnamed@gmail.com?subject=Hello APlayerUnnamed!')"><img
-                                src="mail.png" width=20%>
+                                src="mail.png" width=20% alt="Send APlayerUnnamed a email">
 
         </div>
         <div class="botText">
@@ -548,13 +546,9 @@ function onError(error, fatal) {
         stylesheet.fontSize = '200%'
         document.getElementById('ErrorID').replaceWith(err);
         }
-}
-toggle("iconOnId")
-
-    function changeIcon() {
-        toggle("iconOnId")
-        toggle("iconOffId")
     }
+
+
 
     function toggle(ID) {
         var element = document.getElementById(ID);
@@ -573,7 +567,7 @@ toggle("iconOnId")
 // Sleep
 
 
-async function openUp(url) {
+async function openUp(url, title=url) {
     try {
         if (url.startsWith("mailto")) {
             document.title = "Opening Email Client";
@@ -585,7 +579,7 @@ async function openUp(url) {
 
         } else {
             document.title = "Opening Link - " + url;
-            window.open(`https://aplayerunnamed.github.io/redirect/index.html?redirectLocation=${url}&linkTitle=${url}`, "Link", "width=960,height=720");
+            window.open(`https://aplayerunnamed.github.io/redirect/index.html?redirectLocation=${url}&linkTitle=${title}`, "Link", "width=960,height=720");
             document.title = "APlayerUnnamed";
         }
     } catch (e) {
