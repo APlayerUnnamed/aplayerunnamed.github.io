@@ -22,10 +22,11 @@
 
 <div>
     <div class="content" id="content_id">
-        <div class="top"><button id="t1" onclick="window.location.href = '#title_id'">Title</button><button id="t2"
-                onClick="window.location.href = '#aboutTitle'">About</button><button id="t3"
-                onclick="window.location.href = '#projectsTitle'">Projects</button><button id="t4"
-                onclick="window.location.href = '#linksTitle'">Links</button></div>
+        <div class="top" style="box-shadow: 20px 10px #101010;">
+        <button id="t1" onclick="window.location.href = '#title_id'">Title</button>
+        <button id="t2" onClick="window.location.href = '#aboutTitle'">About</button>
+        <button id="t3" onclick="window.location.href = '#projectsTitle'">Projects</button>
+        <button id="t4" onclick="window.location.href = '#linksTitle'">Links</button></div>
 
         <div class="title">
             <h1 id="title_id"><br><br>APlayerUnnamed</h1>
@@ -111,7 +112,7 @@
     }
 
 
-
+    
     #r1 {
         background-color:transparent;
         outline: none;
@@ -275,6 +276,7 @@
         margin-top: 5%;
         margin-left: 4vw;
         flex-wrap: wrap;
+    
 
 
     }
@@ -284,6 +286,9 @@
         font-size: 4vw;
         font-family:'Courier New', Courier, monospace;
         text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+        animation-name: hover;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
     }
 
 
@@ -301,10 +306,52 @@
 
 
     .top {
-      position: fixed;
-      animation: topAni 2s;
-      box-shadow: 10px 10px #050505;
-      top: -0.1%
+        background-color:#000000;
+        position: fixed;
+        animation: topAni 2s;
+        top: -0.1%
+    }
+    #icon {
+        font-family:'Courier New', Courier, monospace;
+        background-color: #202020;
+        border:0;
+        margin:0;
+        padding:0;
+        color: #F9F0F9;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 3vw;
+        cursor: pointer;
+        max-width: 10vw;
+        min-width: 10vw;
+        min-height: 6vw;
+        max-height: 6vw;
+        transition: ease-in-out 0.4s;
+        text-align: center;
+        align-items: center;
+    }
+
+
+    
+    
+    .theIcon {
+        font-family:'Courier New', Courier, monospace;
+        background-color: #202020;
+        border:0;
+        margin:0;
+        padding:0;
+        color: #F9F0F9;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 3vw;
+        cursor: pointer;
+        max-width: 20vw;
+        min-width: 20vw;
+        max-height: 6vw;
+        min-height: 6vw;
+        transition: ease-in-out 0.4s;
     }
     #t1 {
         font-family:'Courier New', Courier, monospace;
@@ -318,8 +365,9 @@
         display: inline-block;
         font-size: 3vw;
         cursor: pointer;
-        max-width: 24vw;
-        min-width: 24vw;
+        max-width: 20vw;
+        min-width: 20vw;
+        min-height: 6vw;
         transition: ease-in-out 0.4s;
     }
 
@@ -335,8 +383,9 @@
         display: inline-block;
         font-size: 3vw;
         cursor: pointer;
-        max-width: 24vw;
-        min-width: 24vw;
+        max-width: 20vw;
+        min-width: 20vw;
+        min-height: 6vw;
         transition: ease-in-out 0.4s;
     }
     #t3 {
@@ -351,8 +400,9 @@
         display: inline-block;
         font-size: 3vw;
         cursor: pointer;
-        max-width: 24vw;
-        min-width: 24vw;
+        max-width: 20vw;
+        min-width: 20vw;
+        min-height: 6vw;
         transition: ease-in-out 0.4s;
     }
     #t4 {
@@ -367,8 +417,9 @@
         display: inline-block;
         font-size: 3vw;
         cursor: pointer;
-        max-width: 24vw;
-        min-width: 24vw;
+        max-width: 20vw;
+        min-width: 20vw;
+        min-height: 6vw;
         transition: ease-in-out 0.4s;
     }
 
@@ -417,6 +468,27 @@
         min-width: 24vw;
     }
 
+    @keyframes hover {
+        0% {
+            margin-top: 02%;
+        }
+        25% {
+            margin-top: 04%;
+        }
+        50% {
+            margin-top: 05%;
+        }
+        75% {
+            margin-top: 04%;
+        }
+        100% {
+            margin-top: 02%;
+        }
+
+        
+        
+    }
+
 
 
 
@@ -457,6 +529,8 @@ function wait(milisec) {
         document.location.replace("https://aplayerunnamed.github.io/pages/mobile")
     }
 
+    
+
 
 function onError(error, fatal) {
     console.group('I\'m sorry, but a unknown error occurred!');
@@ -475,6 +549,12 @@ function onError(error, fatal) {
         document.getElementById('ErrorID').replaceWith(err);
         }
 }
+toggle("iconOnId")
+
+    function changeIcon() {
+        toggle("iconOnId")
+        toggle("iconOffId")
+    }
 
     function toggle(ID) {
         var element = document.getElementById(ID);
