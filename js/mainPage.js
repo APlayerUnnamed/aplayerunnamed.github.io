@@ -123,11 +123,11 @@ async function openUp( url, title = url )
 try
 {
 	toggle( 'content_id' )
-	preloadImage( 'mail.png', console.log( 'Loaded Email (Icon)' ) );
-	preloadImage( 'discordred.png', console.log( 'Loaded Discord Red (Icon)' ) );
-	preloadImage( 'discordblue.png', console.log( 'Loaded Discord Blue (Icon)' ) );
-	preloadImage( 'github.png', console.log( 'Loaded Github (Icon)' ) );
-	preloadImage( 'back.png', console.log( 'Loaded Background (Background Image)' ) )
+	preloadImage( 'https://aplayerunnamed.github.io/img/mail.png', console.log( 'Loaded Email (Icon)' ) );
+	preloadImage( 'https://aplayerunnamed.github.io/img/discordred.png', console.log( 'Loaded Discord Red (Icon)' ) );
+	preloadImage( 'https://aplayerunnamed.github.io/img/discordblue.png', console.log( 'Loaded Discord Blue (Icon)' ) );
+	preloadImage( 'https://aplayerunnamed.github.io/img/github.png', console.log( 'Loaded Github (Icon)' ) );
+	preloadImage( 'https://aplayerunnamed.github.io/img/back.png', console.log( 'Loaded Background (Background Image)' ) )
 	toggle( 'content_id' )
 }
 catch ( e )
