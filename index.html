@@ -519,7 +519,7 @@ function wait(milisec)
     let queryParameters = address.searchParams;
     // Retrieve specific query parameters
     let ignore = queryParameters.get("ignore");
-    if (ignore != "false")
+    if (!ignore)
     {
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
         {
