@@ -504,47 +504,58 @@ const stylesheet = document.documentElement.style; // Stylesheet
 
 // Functions
 
-function wait(milisec) {
+function wait(milisec)
+{
     return new Promise(resolve => {
         setTimeout(() => { resolve('') }, milisec);
     })
 }
-    const usingInternetExplorer = () => {
+    const usingInternetExplorer = () =>
+    {
             return (navigator.userAgent.indexOf(`MSIE `) > - 1 || navigator.userAgent.indexOf(`Trident/`) > - 1);
-        };
+    };
+    let address = new URL(window.location);
+    // Get searchParameters property of the URL object
+    let queryParameters = address.searchParams;
+    // Retrieve specific query parameters
+    let ignore = queryParameters.get("redirectLocation");
+    if (!ignore)
+    {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+        {
+            console.log("Seems to be on Mobile - Redirecting")
+            document.location.replace("https://aplayerunnamed.github.io/pages/mobile")
+        } else
+        {
+            console.log("Seems to be on PC")
+        }
 
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
-    {
-        console.log("Seems to be on Mobile - Redirecting")
-        document.location.replace("https://aplayerunnamed.github.io/pages/mobile")
-    } else
-    {
-        console.log("Seems to be on PC")
-    }
-
-    if (!usingInternetExplorer)
-    {
-        document.location.replace("https://aplayerunnamed.github.io/pages/mobile")
+        if (!usingInternetExplorer)
+        {
+            document.location.replace("https://aplayerunnamed.github.io/pages/mobile")
+        }
     }
 
     
 
 
-function onError(error, fatal) {
-    console.group('I\'m sorry, but a unknown error occurred!');
-    if (!fatal) {
-        console.info('Error is NON FATAL');
-    } else {
-        console.warn('Error is fatal');
-    }
-    console.error('Error:\n===\n' + error + '\n===')
-    if (fatal) {
-        const err = "I'm sorry but a unknown error occurred! - See the console for details";
-        stylesheet.backgroundColor = '#151515';
-        stylesheet.color = '#FEFEFE';
-        stylesheet.fontFamily = 'Courier New';
-        stylesheet.fontSize = '200%'
-        document.getElementById('ErrorID').replaceWith(err);
+    function onError(error, fatal)
+    {
+        console.group('I\'m sorry, but a unknown error occurred!');
+        if (!fatal) {
+            console.info('Error is NON FATAL');
+        } else {
+            console.warn('Error is fatal');
+        }
+        console.error('Error:\n===\n' + error + '\n===')
+        if (fatal)
+        {
+            const err = "I'm sorry but a unknown error occurred! - See the console for details";
+            stylesheet.backgroundColor = '#151515';
+            stylesheet.color = '#FEFEFE';
+            stylesheet.fontFamily = 'Courier New';
+            stylesheet.fontSize = '200%'
+            document.getElementById('ErrorID').replaceWith(err);
         }
     }
 
