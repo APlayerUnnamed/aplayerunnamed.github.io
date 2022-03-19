@@ -518,8 +518,8 @@ function wait(milisec)
     // Get searchParameters property of the URL object
     let queryParameters = address.searchParams;
     // Retrieve specific query parameters
-    let ignore = queryParameters.get("redirectLocation");
-    if (!ignore)
+    let ignore = queryParameters.get("ignore");
+    if (ignore != "false")
     {
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
         {
