@@ -2,7 +2,7 @@
 <div id="select">
     <div id="selectText"></div>
     <div id="selectButtonDiv">
-        <input type="file" id="selectButton" accept=".md, .markdown, .txt, .text"></input>
+        <input type="file" id="selectButton" accept=".md, .markdown, .txt, .text", name="select" alt="Select File"></input>
     </div>
     
     
@@ -109,6 +109,8 @@
 
 </script>
 <style>
+    
+    
     @keyframes aniM {
         from {
             opacity: 0;
@@ -126,8 +128,8 @@
     }
     #select {
         text-align: center;
+        min-width: 40%;
         max-width: 40%;
-        min-width: fit-content;
         background-color: #1e2127;
         margin: 0 auto;
         border-radius: 15px;
@@ -212,6 +214,65 @@
         min-width: 30%;
         border-color: yellow;
     }
+    @media only screen and (max-width: 800px) {  
+        #select {
+            min-width: none;
+            max-width: none;
+        }
+        #reload {
+            max-width: 50%;
+            min-width: 50%;
+        }
+        #reload:hover {
+            max-width: 60%;
+            min-width: 60%;
+            border-color: blueviolet;
+        }
+        #reload:disabled {
+            max-width: 60%;
+            min-width: 60%;
+            border-color: yellow;
+        }
+        #save {
+            max-width: 50%;
+            min-width: 50%;
+        }
+        #save:hover {
+            max-width: 60%;
+            min-width: 60%;
+            border-color: blueviolet;
+        }
+        #save:disabled {
+            max-width: 60%;
+            min-width: 60%;
+            border-color: yellow;
+        }
+        #mdArea {
+
+            max-width: none;
+            min-width: none;
+
+        }
+
+        #selectButton {
+            color:aliceblue;
+            transition: ease-in-out 1s;
+            text-align: center;
+            max-width: 70%;
+            min-width: 70%;
+            background-color: #1e2127;
+            margin: 0 auto;
+            padding: 2%;
+            border-style: solid;
+            border-color: crimson;
+        }
+        #selectButton:hover {
+            max-width: 75%;
+            min-width: 75%;
+            border-color: blueviolet;
+        }
+
+} 
 
 
 </style>
