@@ -20,7 +20,7 @@
 .dr
 {
 	color: #F9F0F9;
-	overflow: hidden;
+	overflow-x: hidden;
 	background-color: #202020;
 	text-align: center;
 	font-size: 4vw;
@@ -150,12 +150,14 @@
 
 .about
 {
+	animation: opacityFadeIn 3s;
 	text-align: center;
 	margin-top: 10%;
 	font-size: 4vw;
 	font-family: 'Courier New', Courier, monospace;
 	text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
 }
+
 
 .projects
 {
@@ -207,6 +209,8 @@
 	animation-duration: 5s;
 	animation-iteration-count: infinite;
 }
+
+
 
 :root
 {

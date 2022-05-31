@@ -1,0 +1,217 @@
+
+<div id="select">
+    <div id="selectText"></div>
+    <div id="selectButtonDiv">
+        <input type="file" id="selectButton"></input>
+    </div>
+    
+    
+</div>
+<div id="mdArea">
+
+</div>
+
+<div id="buttons">
+    <br>
+    <br>
+    <button id="save" onclick="saveas()">Save Page</button>
+    <br>
+    <button id="reload">Reload</button>
+    
+</div>
+<script type="text/javascript" src="drawdown.js"></script>
+<script>
+
+    document.getElementById("mdArea").style.visibility = "hidden";
+    document.getElementById("save").style.visibility = "hidden";
+    document.title = "Markdown Viewer"
+    
+
+    let select = `# Select a file
+    `
+    let doc = new Document()
+    let selectLe = document.getElementById("selectText")
+    selectLe.innerHTML += markdown(select);
+    let input = document.querySelector('input')
+    let isSelected = false;
+    document.getElementById("selectButton").addEventListener("click", function () {
+            let me = document.getElementById("selectButton")
+            if (!isSelected) {
+                document.getElementById("selectText").innerHTML += "Select the file to view as markdown";
+            }
+            isSelected = true;
+
+        });
+    document.getElementById("selectButton").addEventListener("change", function () {
+        let me = document.getElementById("selectButton")
+
+        let files = input.files;
+
+        if (files.length == 0) {
+            return
+        }
+
+        /* If any further modifications have to be made on the
+           Extracted text. The text can be accessed using the
+           file variable. But since this is const, it is a read
+           only variable, hence immutable. To make any changes,
+           changing const to var, here and In the reader.onload
+           function would be advisible */
+        const file = files[0];
+        let text = "";
+        let reader = new FileReader();
+        let mde = document.getElementById("mdArea");
+
+         reader.onload = (e) => {
+            const file = e.target.result;
+
+            // This is a regular expression to identify carriage
+            // Returns and line breaks
+            const lines = file.split(/\r\n|\n/);
+            console.log(lines.join('\n'))
+            mde.innerHTML = markdown("# Your File:\n" + lines.join('\n'));
+            document.getElementById("save").style.visibility = "visible";
+
+
+        };
+
+        reader.onerror = (e) => alert(e.target.error.name);
+
+        reader.readAsText(file);
+        document.getElementById("mdArea").style.visibility = "visible";
+        
+        while (document.getElementById("select").style.opacity >= 0.0) {
+            document.getElementById("select").style.opacity -= 0.01
+            setTimeout(function () {
+            }, 50);
+        }
+        console.log(text)
+    });
+
+    document.getElementById("reload").addEventListener("click", function () {
+        document.getElementById("reload").disabled = true;
+        setTimeout(function () {
+            window.location.reload()
+        }, 500);
+        
+    })
+    function saveas() {
+        var printWindow = window.open("", "Print or Save", `width=${window.screen.availWidth / 2} height=${window.screen.availHeight / 2}`);
+        printWindow.document.write(document.getElementById("mdArea").innerHTML);
+        printWindow.document.write("<style>body {background-color: #131518; color: white; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}</style>");
+        printWindow.focus()
+        printWindow.print()
+        printWindow.close()
+        document.getElementById("save").style.borderColor = "green";
+    }
+
+    
+
+</script>
+<style>
+    @keyframes aniM {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    body {
+        background-color: #131518;
+        color: white;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+        text-align: center;
+        align-items: center;
+    }
+    #select {
+        text-align: center;
+        max-width: 40%;
+        min-width: fit-content;
+        background-color: #1e2127;
+        margin: 0 auto;
+        border-radius: 15px;
+        padding: 2%;
+        transition: ease-in-out 1s;
+    }
+    #selectButton {
+        color:aliceblue;
+        transition: ease-in-out 1s;
+        text-align: center;
+        max-width: 45%;
+        min-width: 45%;
+        background-color: #1e2127;
+        margin: 0 auto;
+        padding: 2%;
+        border-style: solid;
+        border-color: crimson;
+    }
+    #selectButton:hover {
+        max-width: 50%;
+        min-width: 50%;
+        border-color: blueviolet;
+    }
+    #mdArea {
+        visibility: hidden;
+        text-align: center;
+        max-width: 40%;
+        min-width: fit-content;
+        background-color: #1e2127;
+        margin: 0 auto;
+        border-radius: 15px;
+        padding: 2%;
+        text-align: left;
+    }
+    #reload {
+        color:aliceblue;
+        transition: ease-in-out 1s;
+        text-align: center;
+        max-width: 20%;
+        min-width: 20%;
+        font-size: x-large;
+        background-color: #1e2127;
+        margin: 0 auto;
+        padding: 2%;
+        border-style: solid;
+        border-color: crimson;
+    }
+    #reload:hover {
+        max-width: 30%;
+        min-width: 30%;
+        border-color: blueviolet;
+    }
+    #reload:disabled {
+        transform:rotate(360deg);
+        max-width: 30%;
+        min-width: 30%;
+        border-color: yellow;
+    }
+    #save {
+        
+        color:aliceblue;
+        text-align: center;
+        max-width: 20%;
+        min-width: 20%;
+        font-size: x-large;
+        background-color: #1e2127;
+        margin: 0 auto;
+        padding: 2%;
+        border-style: solid;
+        border-color: crimson;
+    }
+    #save:hover {
+        transition: ease-in-out 1s;
+        max-width: 30%;
+        min-width: 30%;
+        border-color: blueviolet;
+    }
+    #save:disabled {
+        transition: ease-in-out 1s;
+        transform:rotate(360deg);
+        max-width: 30%;
+        min-width: 30%;
+        border-color: yellow;
+    }
+
+
+</style>
